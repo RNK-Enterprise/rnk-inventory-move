@@ -1,0 +1,7 @@
+{
+  "RNKCSBIT": {
+    "Notifications": {
+      "NoDeletePermission": "RNK Item Transfer: You do not have permission to remove the item from its source actor."
+    }
+  }
+}
