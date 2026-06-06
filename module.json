@@ -1,16 +1,16 @@
 {
-  "id": "rnk-csb-item-transfer",
-  "title": "RNK CSB Item Transfer",
-  "description": "Intercepts drag-and-drop between Custom System Builder actor inventories and deletes the source item after creation, giving the illusion of a true item move rather than a duplicate.",
-  "version": "1.0.0",
+  "id": "ld-inventory-move",
+  "title": "LD Inventory Move",
+  "description": "Moves items between actors without leaving a duplicate behind.",
+  "version": "1.0.5",
   "compatibility": {
-    "minimum": "11",
-    "verified": "13"
+    "minimum": "13",
+    "verified": "14"
   },
   "authors": [
     {
-      "name": "RNK Enterprises",
-      "url": "https://www.patreon.com/RNKEnterprises"
+      "name": "Lisa's Dungeon",
+      "url": "https://patreon.com/LisasDungeon?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink"
     }
   ],
   "esmodules": [
@@ -23,8 +23,8 @@
       "path": "lang/en.json"
     }
   ],
-  "manifest": "https://github.com/RNK-Enterprise/rnk-csb-item-transfer/releases/latest/download/module.json",
-  "download": "https://github.com/RNK-Enterprise/rnk-csb-item-transfer/releases/download/v1.0.0/rnk-csb-item-transfer.zip",
-  "url": "https://github.com/RNK-Enterprise/rnk-csb-item-transfer",
+  "manifest": "https://github.com/lisasdungeon/ld-inventory-move/releases/latest/download/module.json",
+  "download": "https://github.com/lisasdungeon/ld-inventory-move/releases/download/v1.0.5/ld-inventory-move.zip",
+  "url": "https://github.com/lisasdungeon/ld-inventory-move",
   "license": "LICENSE"
 }
