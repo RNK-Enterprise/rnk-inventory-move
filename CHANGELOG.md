@@ -7,6 +7,15 @@ Versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.1.2] - 2026-06-24
+
+### Fixed
+
+- Restored CSB's native same-actor item-to-actor handling so items can be moved out of item containers without breaking the drop.
+- Cross-actor moves now let CSB create the target item and nested contents before the source item is deleted, preserving items stored inside containers.
+
+---
+
 ## [1.1.0] - 2026-06-24
 
 ### Changed
