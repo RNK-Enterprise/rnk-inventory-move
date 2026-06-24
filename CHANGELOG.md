@@ -1,9 +1,24 @@
 # Changelog
 
-All notable changes to **LD Inventory Move** will be documented here.
+All notable changes to **RNK Inventory Move** will be documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 Versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [1.1.0] - 2026-06-24
+
+### Changed
+
+- Renamed module from LD Inventory Move to RNK Inventory Move (`ld-inventory-move` → `rnk-inventory-move`).
+- Updated all branding, manifest, download, and GitHub URLs to RNK Enterprise.
+- Localization namespace changed from `LDIM` to `RNKIM`.
+
+### Fixed
+
+- Item drops from item displayers (item sheet) into actor inventories now correctly create a copy on the target actor instead of falling back to CSB's no-op handler.
+- Source items are only deleted when they are owned by an actor; drops from world item displayers produce a copy and leave the world item intact.
 
 ---
 
@@ -19,11 +34,6 @@ Versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ---
 
 ## [1.0.2] - 2026-06-06
-
-### Changed
-
-- Renamed the module branding to Lisa's Dungeon / LD Inventory Move.
-- Updated the manifest, download, GitHub, Patreon, and localization strings to the new naming.
 
 ### Fixed
 
@@ -51,5 +61,4 @@ Versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Permission guard - warns and aborts the delete if the current user cannot delete the source item.
 - Same-actor, sidebar, and compendium drops pass through untouched.
 - English localization (`lang/en.json`).
-- Proprietary Lisa's Dungeon license.
-- README with install URL, behavior table, and Patreon link.
+- README with install URL, behavior table, and GitHub link.

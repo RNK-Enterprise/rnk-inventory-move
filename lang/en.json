@@ -1,7 +1,7 @@
 {
-  "RNKCSBIT": {
+  "RNKIM": {
     "Notifications": {
-      "NoDeletePermission": "RNK Item Transfer: You do not have permission to remove the item from its source actor."
+      "NoDeletePermission": "RNK Inventory Move: You do not have permission to remove the item from its source actor."
     }
   }
 }
