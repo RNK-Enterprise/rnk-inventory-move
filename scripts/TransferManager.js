@@ -12,6 +12,9 @@
 export class TransferManager {
     static MODULE_ID = 'rnk-inventory-move';
     static EMBEDDED_ITEMS_FOLDER_NAME = 'CSB - Embedded Items Folder - DO NOT RENAME OR REMOVE';
+    // Tracks UUIDs of items currently being transferred to prevent double-firing
+    // when multiple patched prototypes are in the same call chain.
+    static _inFlight = new Set();
 
     static init() {
         Hooks.once('ready', TransferManager._patchSheets);
@@ -113,20 +116,31 @@ export class TransferManager {
                 return original.call(this, event, data);
             }
 
-            const itemData = await TransferManager._createWithContents([item], targetItem);
-            const created = await targetActor.createEmbeddedDocuments('Item', itemData);
-            if (created?.length) {
-                // Only remove from source if the item was owned by an actor (not a world item)
-                if (sourceActor) {
-                    await sourceActor.deleteEmbeddedDocuments('Item', [item.id]);
-                    void sourceActor.render(false);
+            // Guard: if this item is already mid-transfer (another patched proto fired first), bail
+            if (TransferManager._inFlight.has(item.uuid)) {
+                return null;
+            }
+            TransferManager._inFlight.add(item.uuid);
+
+            let result = null;
+            try {
+                const itemData = await TransferManager._createWithContents([item], targetItem);
+                const created = await targetActor.createEmbeddedDocuments('Item', itemData);
+                if (created?.length) {
+                    // Only remove from source if the item was owned by an actor (not a world item)
+                    if (sourceActor) {
+                        await sourceActor.deleteEmbeddedDocuments('Item', [item.id]);
+                        void sourceActor.render(false);
+                    }
+                    void targetActor.render(false);
+                    void targetItem?.render(false);
+                    result = created[0];
                 }
-                void targetActor.render(false);
-                void targetItem?.render(false);
-                return created[0];
+            } finally {
+                TransferManager._inFlight.delete(item.uuid);
             }
 
-            return null;
+            return result;
         };
     }
 }
